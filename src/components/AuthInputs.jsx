@@ -1,13 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
 import Button from "./Button";
 import Input from "./Input";
-const ControlContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-`;
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -30,33 +23,18 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
-      <ControlContainer>
-        {/* <p className="para">
-          <Label $notvalid={emailNotValid}>Email</Label>
-          <Input
-            type="email"
-            $notvalid={emailNotValid}
-            // className={emailNotValid ? "$notvalid" : ""}
-            onChange={(event) => handleInputChange("email", event.target.value)}
-          />
-        </p> */}
+    <div
+      id="auth-inputs"
+      className=" mx-auto p-8 w-full   max-w-sm rounded shadow-md bg-gradient-to-b from-stone-700 to-stone-800"
+    >
+      <div className="flex flex-col gap-2 mb-6 ">
         <Input
           type="email"
           onChange={(event) => handleInputChange("email", event.target.value)}
           label="Email"
           invalid={emailNotValid}
         />
-        {/* <p>
-          <Label $notvalid={passwordNotValid}>Password</Label>
-          <Input
-            type="password"
-            $notvalid={passwordNotValid}
-            onChange={(event) =>
-              handleInputChange("password", event.target.value)
-            }
-          />
-        </p> */}
+
         <Input
           onChange={(event) =>
             handleInputChange("password", event.target.value)
@@ -65,9 +43,9 @@ export default function AuthInputs() {
           label="password"
           invalid={passwordNotValid}
         />
-      </ControlContainer>
-      <div className="actions">
-        <button type="button" className="text-button">
+      </div>
+      <div className="flex justify-end gap-4">
+        <button type="button" className="text-amber-400 hover:text-amber-500">
           Create a new account
         </button>
         <Button onClick={handleLogin}>Sign In</Button>
